@@ -14,3 +14,45 @@
 ＜画面設計＞＜URL設計＞＜テーブル定義＞
 https://www.hypertextcandy.com/laravel-tutorial-todo-app-design/
 
+＜作業の流れ＞
+routes/web.phpルーティング設定
+コントローラークラス作成
+$ php artisan make:controller TaskController
+コントローラー変更
+app/Http/Controllers/TaskController.php
+→試し：/folders/1/tasksにアクセス
+
+DBで新しいデータベースを作成
+
+.envデータベース接続設定
+
+マイグレーションファイル作成(複数形)
+$ php artisan make:migration create_folders_table --create=folders
+
+マイグレーション変更
+/database/migrations/2021_11_30_002103_create_folders_table.php
+
+マイグレーション実行
+$ php artisan migrate
+
+モデルクラス作成
+$ php artisan make:model Folder
+
+シーダー作成
+$ php artisan make:seeder FoldersTableSeeder
+
+シーダー変更
+/database/seeds/FoldersTableSeeder.php
+
+シーダー実行
+$ composer dump-autoload
+$ php artisan db:seed --class=FoldersTableSeeder
+
+コントローラー変更
+app/Http/Controllers/TaskController.php
+
+ディレクトリ作成
+$ mkdir resources/views/tasks
+
+ファイル作成
+resources/views/tasks/index.blade.php
