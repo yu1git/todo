@@ -18,6 +18,7 @@ class CreateTasksTable extends Migration
             $table->integer('folder_id')->unsigned();
             $table->string('title',100);
             $table->date('due_date');
+            //タスクの最初の状態は「未着手」の「1」
             $table->integer('status')->default(1);
             $table->timestamps();
 
