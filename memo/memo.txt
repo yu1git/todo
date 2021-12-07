@@ -56,3 +56,5 @@ $ mkdir resources/views/tasks
 
 ファイル作成
 resources/views/tasks/index.blade.php
+
+2021/12/07次、シード実行
