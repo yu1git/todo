@@ -21,7 +21,7 @@ class TaskController extends Controller
         //クエリビルダのwhere(カラム名,'=',比較する値)
         //以下は「＝」を省略している。第二引数を変えると、イコール以外の比較も可能
         //Tasks::where('folder_id', '=', $current_folder->id)->get();
-        $tasks = Task::where('folder_id', $current_folder->id)->get();
+        $tasks =  $current_folder->tasks()->get();
         
         return view('tasks/index', [
             'folders' => $folders,
