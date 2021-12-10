@@ -61,4 +61,39 @@ Task モデルにアクセサ(アクセス時にモデルのプロパティの�
 
 モデルにリレーションを追加して、コードをきれいに
 
-2021/12/09次、日フォルダを保存するのコントローラーの解説
+https://www.hypertextcandy.com/laravel-tutorial-create-folder#%E3%82%B3%E3%83%B3%E3%83%88%E3%83%AD%E3%83%BC%E3%83%A9%E3%83%BC-1
+
+モデルクラスを永続化、つまりデータベースに書き込む処理
+1モデルクラスのインスタンスを作成する。
+$folder = new Folder();
+2インスタンスのプロパティに値を代入する。
+$folder->title = $request->title;
+3save メソッドを呼び出す。
+$folder->save();
+
+入力値バリデーション
+FormRequest クラス
+$ php artisan make:request CreateFolder
+※FormRequest クラスは基本的に一つのリクエストに対して一つ作成
+
+app/Http/Requests/CreateFolder.php 
+
+エラーメッセージを日本語化する
+1日本語メッセージ定義を追加するためのディレクトリ作成
+$ mkdir ./resources/lang/jp
+2英語版のバリデーションメッセージを定義しているvalidation.phpをjpディレクトリにコピー
+$ cp ./resources/lang/en/validation.php ./resources/lang/jp/
+3使用するものだけ日本語化
+※:attributeが入力欄の名前に置き換わるのでそのままにして、残りを日本語に変更
+4日本語版の設定を参照するように config/app.php を編集
+'locale' => 'jp', // ★
+'fallback_locale' => 'en',
+※変更すると、Laravel はメッセージ定義が必要になったときにまず jp ディレクトリを探しに行き、見つからなければ fallback_locale である en のディレクトリにあるファイルを使う
+5入力欄の名称をカスタマイズするには、FormRequest クラスに attributes メソッドを追加
+
+入力エラーでフォーム画面に戻ってきたときに入力欄の値を復元
+folders/create.blade.php のタイトル入力欄の input 要素に
+value="{{ old('title') }}"
+を追加。引数は取得したい入力欄のname属性
+
+2021/12/10次、6
