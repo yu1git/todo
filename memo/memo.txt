@@ -106,4 +106,21 @@ HTML
 resources/views/layout.blade.php
 ※ページごとに変化する部分は @yield で穴埋め
 
-2021/12/10次6、タスク作成ページテンプレート
+テンプレートファイルを以下の構造に変える
+@extends('layout')
+
+@section('styles')
+  <!-- ... -->
+@endsection
+
+@section('content')
+  <!-- ... -->
+@endsection
+
+@section('scripts')
+  <!-- ... -->
+@endsection
+
+
+
+2021/12/10次6、バリデーションの説明
