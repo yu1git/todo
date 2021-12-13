@@ -96,4 +96,14 @@ folders/create.blade.php のタイトル入力欄の input 要素に
 value="{{ old('title') }}"
 を追加。引数は取得したい入力欄のname属性
 
-2021/12/10次、6
+HTML
+・form の action 属性には route 関数
+・@csrf
+・入力エラーメッセージの表示欄
+・入力エラーで戻ってきたときのために value 属性に old 関数
+
+重複する箇所(head 要素や header 要素)はレイアウトファイルにまとめる
+resources/views/layout.blade.php
+※ページごとに変化する部分は @yield で穴埋め
+
+2021/12/10次6、タスク作成ページテンプレート
