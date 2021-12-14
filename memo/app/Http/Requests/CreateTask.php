@@ -25,6 +25,7 @@ class CreateTask extends FormRequest
     {
         return [
             'title' => 'required|max:100',
+            //after_or_equal（特定の日付と同じまたはそれ以降の日付であること）の引数にtodayとすることで、タスクの期限は今日を含んだ未来だけ
             'due_date' => 'required|date|after_or_equal:today',
         ];
     }
@@ -37,9 +38,12 @@ class CreateTask extends FormRequest
         ];
     }
 
+    //FormRequest クラス単位でエラーメッセージするために定義
     public function messages()
     {
         return [
+            // キーでメッセージが表示されるべきルールを指定する。
+            // ドット区切りで左側が項目、右側がルールを意味する。
             'due_date.after_or_equal' => ':attribute には今日以降の日付を入力してください。',
         ];
     }
